@@ -124,15 +124,16 @@ $(function() {
             loadFeed(0, function () {
                 firstFeedEntries = $('.feed').find('.entry');
                 // Run second loadfeed with callback
-                loadFeed(1,function () {
+                loadFeed(0,function () {
                     secondFeedEntries = $('.feed').find('.entry');
                     done();
                 })
             })
         });
 
-        it('causes content to change', function () {
-            expect(firstFeedEntries).not.toEqual(secondFeedEntries)
+        it('causes content to change', function (done) {
+            expect(firstFeedEntries).not.toEqual(secondFeedEntries);
+            done();
         })
     });
 }());
