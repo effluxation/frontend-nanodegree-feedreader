@@ -109,14 +109,30 @@ $(function() {
         })
 
     });
-    // /* TODO: Write a new test suite named "New Feed Selection" */
-    // describe('New Feed Selection', function () {
-    //     /* TODO: Write a test that ensures when a new feed is loaded
-    //      * by the loadFeed function that the content actually changes.
-    //      * Remember, loadFeed() is asynchronous.
-    //      */
-    //     it('causes content to change', function () {
 
-    //     })
-    // });
+    /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function () {
+        /* TODO: Write a test that ensures when a new feed is loaded
+         * by the loadFeed function that the content actually changes.
+         * Remember, loadFeed() is asynchronous.
+         */
+        let firstFeedEntries;
+        let secondFeedEntries;
+
+        beforeEach(function (done) {
+            // Run first loadfeed with callback
+            loadFeed(0, function () {
+                firstFeedEntries = $('.feed').find('.entry');
+                // Run second loadfeed with callback
+                loadFeed(1,function () {
+                    secondFeedEntries = $('.feed').find('.entry');
+                    done();
+                })
+            })
+        });
+
+        it('causes content to change', function () {
+            expect(firstFeedEntries).not.toEqual(secondFeedEntries)
+        })
+    });
 }());
