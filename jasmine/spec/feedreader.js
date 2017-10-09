@@ -99,14 +99,14 @@ $(function() {
             //Run loadfeed with callback
             loadFeed(0, function () {
                 done();
-            })
+            });
         });
 
         it('consists of at least 1 .entry element in .feed container when loadFeed called', function (done) {
             let feedEntries = $('.feed').find('.entry').length;
             expect(feedEntries).toBeGreaterThan(0);
             done();
-        })
+        });
 
     });
 
@@ -127,13 +127,13 @@ $(function() {
                 loadFeed(0,function () {
                     secondFeedEntries = $('.feed').find('.entry');
                     done();
-                })
-            })
+                });
+            });
         });
 
         it('causes content to change', function (done) {
             expect(firstFeedEntries).not.toEqual(secondFeedEntries);
             done();
-        })
+        });
     });
 }());
